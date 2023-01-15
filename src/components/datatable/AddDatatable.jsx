@@ -9,17 +9,25 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+
+
+
 
 const AddDatatable = () => {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     // LISTEN (REALTIME)
     const sub = onSnapshot(
       collection(db, "sms"),
       (snapShot) => {
-             let list = snapShot.docs.map(doc=>{
-          return {...doc.data(),id: doc.id}
+        let list = snapShot.docs.map(doc => {
+          return { ...doc.data(), id: doc.id }
         })
         setData(list);
       },
@@ -39,11 +47,22 @@ const AddDatatable = () => {
       console.log(err);
     }
   };
+
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+
+
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
-      width: 100,
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -53,6 +72,29 @@ const AddDatatable = () => {
             >
               Delete
             </div>
+
+          
+            <Button onClick={handleOpen}>Update</Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="parent-modal-title"
+              aria-describedby="parent-modal-description"
+            >
+              <Box sx={{ width: 400 }}>
+                <h2 id="parent-modal-title">SMS title</h2>
+
+                <p id="parent-modal-description">
+                  SMS Message
+                </p>
+
+                <Button onClick={handleClose}>Close</Button>
+                <Button onClick={handleClose}>Submit</Button>
+                  
+                
+                
+              </Box>
+            </Modal>
           </div>
         );
       },
