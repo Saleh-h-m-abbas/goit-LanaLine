@@ -10,6 +10,7 @@ import { db } from "../../firebase";
 import {
   Button,
   Card,
+  FormControl,
   Grid,
   InputLabel,
   MenuItem,
@@ -18,7 +19,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import Autocomplete from "@mui/material/Autocomplete";
 import SendIcon from "@mui/icons-material/Send";
 import { Formik } from "formik";
 import { sendSmsSchema } from "../validation/Validation";
@@ -101,6 +101,7 @@ const SmsSendForm = () => {
             await addDoc(collection(db, "SendSms"), {
               email: user.email,
               sms: sms,
+              smsTitle: document.getElementById('demo-simple-select-required').innerHTML,
               number: values.phoneNumber,
               sender: sender,
               createdAt: serverTimestamp(),
@@ -157,33 +158,22 @@ const SmsSendForm = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                {/* <Autocomplete
-                                    disablePortal
-                                    options={option}
-                                    onInputChange={(event, newInputValue) => {
-                                        console.log(newInputValue);
-                                        setSMS(newInputValue);
-                                    }}
-                                    renderInput={(params) => <TextField  {...params} label="Please Select SMS Message" />}
-                                /> */}
-                {/* <Select value={sms} onChange={(value)=>setSMS(value)}>
-                  {valueOption.map(({ label, value }) => (
-                   
-                    <option id={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
-                </Select> */}
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={sms}
-                  label="Age"
-                  onChange={(event) => console.log(event.target.value)}
-                >
-                    {valueOption.map((value)=> <MenuItem value={value.value}>{value.label}</MenuItem>)}
-                </Select>
+                <FormControl required fullWidth>
+                  <InputLabel id="demo-simple-select-required-label">
+                    SMS Title
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-required-label"
+                    id="demo-simple-select-required"
+                    value={sms}
+                    label="SMS Title *"
+                    onChange={(event) => setSMS(event.target.value)}
+                  >
+                    {valueOption.map((value) => (
+                      <MenuItem value={value.value}>{value.label}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <Item

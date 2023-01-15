@@ -8,6 +8,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import SmsAddPage from "./pages/add/SmsAddPage";
 import SmsSendPage from "./pages/send/SmsSendPage";
+import Users from "./pages/settings/Users";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const {currentUser} = useContext(AuthContext)
@@ -28,7 +29,7 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route path="users">
+            <Route path="sms">
               <Route
                 index
                 element={
@@ -55,6 +56,16 @@ function App() {
                 element={
                   <RequireAuth>
                     <SmsAddPage />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="users">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <Users />
                   </RequireAuth>
                 }
               />

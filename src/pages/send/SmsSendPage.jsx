@@ -11,7 +11,7 @@ const SmsSendPage = () => {
       <div className="listContainer">
         <Navbar />
         <SmsSendForm /> 
-        {/* <SendDatatable /> */}
+        <SendDatatable />
       </div>
     </div>
   )

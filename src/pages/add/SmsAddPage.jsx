@@ -1,8 +1,8 @@
 import "./SmsForm.scss"
 import Navbar from "../../components/navbar/Navbar"
 import SmsAddForm from "./SmsAddForm";
-import SmsDatatable from "../../components/datatable/AddDatatable";
 import Sidebar from "../../components/sidebar/Sidebar";
+import AddDatatable from "../../components/datatable/AddDatatable";
 
 const SmsAddPage = () => {
   return (
@@ -11,7 +11,7 @@ const SmsAddPage = () => {
       <div className="listContainer">
         <Navbar />
         <SmsAddForm />
-        <SmsDatatable />
+        <AddDatatable />
       </div>
     </div>
   )

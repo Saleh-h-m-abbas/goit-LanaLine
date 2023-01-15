@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import SendIcon from '@mui/icons-material/Send';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import PeopleIcon from '@mui/icons-material/People';
 
 const Sidebar = () => {
   const { dispatch } = useContext(AuthContext);
@@ -30,7 +31,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/sms" style={{ textDecoration: "none" }}>
             <li>
               <SmsIcon className="icon" />
               <span>SMS</span>
@@ -51,7 +52,12 @@ const Sidebar = () => {
           </Link>}
 
           <p className="title">Settings</p>
-
+          {user.email === "admin@lanaline.ps" && <Link to="/users" style={{ textDecoration: "none" }}>
+            <li>
+              <PeopleIcon className="icon" />
+              <span>Users</span>
+            </li>
+          </Link>}
           <li onClick={() => dispatch({ type: "LOGOUT" })}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../datatablesource";
+import { smsMessageColumns, userColumns } from "../../datatablesource";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -36,7 +36,7 @@ const SendDatatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns}
+        columns={smsMessageColumns}
         pageSize={100}
         rowsPerPageOptions={[9]}
       />
