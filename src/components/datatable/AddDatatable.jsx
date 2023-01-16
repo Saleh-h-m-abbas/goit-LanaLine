@@ -9,17 +9,19 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { PopupMessage } from "./PopupMessage";
 
 const AddDatatable = () => {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     // LISTEN (REALTIME)
     const sub = onSnapshot(
       collection(db, "sms"),
       (snapShot) => {
-             let list = snapShot.docs.map(doc=>{
-          return {...doc.data(),id: doc.id}
+        let list = snapShot.docs.map(doc => {
+          return { ...doc.data(), id: doc.id }
         })
         setData(list);
       },
@@ -30,6 +32,9 @@ const AddDatatable = () => {
 
     return sub;
   }, []);
+
+  
+
 
   const handleDelete = async (id) => {
     try {
@@ -43,7 +48,7 @@ const AddDatatable = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 100,
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -53,6 +58,10 @@ const AddDatatable = () => {
             >
               Delete
             </div>
+
+           
+            <PopupMessage />
+
           </div>
         );
       },
