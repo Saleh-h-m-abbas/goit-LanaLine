@@ -14,8 +14,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from "./Copyright";
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -65,7 +63,7 @@ const Login = () => {
 
           }}
         />
-        <Grid className="loginRight" item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 25,
