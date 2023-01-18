@@ -14,6 +14,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from "./Copyright";
+import gif from './images/Tabletlogin.gif'
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -66,27 +67,32 @@ const Login = () => {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
-              my: 25,
+              my: 12,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
+
             {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar> */}
 
-              
-            <form  onSubmit={handleLogin}>
-              <Typography 
+
+            <form onSubmit={handleLogin}>
+              <Typography align="center">
+                <img className="gif" src={gif} alt="" />
+              </Typography>
+
+              <Typography
                 fontSize={'35px'}
                 component="h1"
                 variant="h10" align="center">
                 LanaLine Login
               </Typography>
 
-            
+
               <TextField
                 margin="normal"
                 required
@@ -95,8 +101,8 @@ const Login = () => {
                 type="email"
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
-                />
-              
+              />
+
               <TextField
                 margin="normal"
                 required
