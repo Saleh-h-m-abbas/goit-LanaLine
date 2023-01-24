@@ -12,18 +12,15 @@ export const Copyright = (props) => {
         fontFamily="fantasy"
         fontSize={'20px'}
         {...props}>
-
         {'Powered By '}
       </Typography>
-
       <Link color="#890ab4" href="https://www.goit.ps/">
         <img
+        alt='GoIT'
           width={'120px'}
-          src={process.env.PUBLIC_URL + '/images/goIt.jpg'}
+          src={process.env.PUBLIC_URL + '/images/goIt.png'}
         />
-      </Link>{' '}
-      {/* {new Date().getFullYear()} */}
-      {'.'}
+      </Link>
     </>
   )
 }
